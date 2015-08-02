@@ -35,7 +35,7 @@
   }
 
   moe.Skin.fromJSON = function(json) {
-    return moe.Skin.fromObject(moe.utils.deserialize(json));
+    return moe.Skin.fromObject(eval(json));
   }
 
   moe.Skin.fromPath = function(path) {

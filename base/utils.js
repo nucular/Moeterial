@@ -15,15 +15,7 @@
   }
 
   moe.utils.deserialize = function(string) {
-    return JSON.parse(string, function(k, v) {
-      if (typeof(v) == "string") {
-        var fm = v.match(/^function\(([\s\S]*)\) *\{([\s\S]*)\}$/);
-        if (fm && fm.length == 3) {
-          return new Function(fm[1], fm[2]);
-        }
-      }
-      return v;
-    });
+    return eval(string);
   }
 
   moe.utils.serialize = function(obj) {
