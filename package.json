@@ -1,0 +1,32 @@
+{
+  "name": "Moeterial",
+  "version": "0.0.1",
+  "description": "An osu! skin based on Material Design and a Node.js tool to render it",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nucular/Moeterial.git"
+  },
+  "keywords": [
+    "osu",
+    "skin",
+    "material",
+    "design",
+    "svg",
+    "xmgen"
+  ],
+  "author": "nucular",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nucular/Moeterial/issues"
+  },
+  "homepage": "https://github.com/nucular/Moeterial",
+  "dependencies": {
+    "commander": "^2.8.1",
+    "svg2png": "^1.1.1",
+    "xmgen": "nucular/xmgen"
+  }
+}
