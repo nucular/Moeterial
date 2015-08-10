@@ -2,6 +2,7 @@ var palette = require("./palette");
 
 var themes = {
   light: {
+    name: "light",
     statusbar: palette.grey.p300,
     appbar: palette.grey.p100,
     background: palette.grey.p50,
@@ -17,6 +18,7 @@ var themes = {
   },
 
   dark: {
+    name: "dark",
     statusbar: palette.black.p900,
     appbar: palette.grey.p900,
     background: "#303030",

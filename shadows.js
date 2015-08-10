@@ -3,7 +3,7 @@ var svg = require("xmgen").svg;
 var shadows;
 with (svg()) {
   shadows = defs({
-    "id": "material-shadows"
+    "id": "moeterial-shadows"
   })(
     filter({
       "style": "color-interpolation-filters:sRGB;",

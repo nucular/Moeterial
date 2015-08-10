@@ -1,180 +1,240 @@
+var Colour = require("./colour");
+
 var palette = {
   red: {
     p: [
-      "#FFEBEE", "#FFCDD2", "#EF9A9A", "#E57373", "#EF5350",
-      "#F44336", "#E53935", "#D32F2F", "#C62828", "#B71C1C"
+      new Colour("#FFEBEE"), new Colour("#FFCDD2"), new Colour("#EF9A9A"),
+      new Colour("#E57373"), new Colour("#EF5350"), new Colour("#F44336"),
+      new Colour("#E53935"), new Colour("#D32F2F"), new Colour("#C62828"),
+      new Colour("#B71C1C")
     ],
     a: [
-      "#FF8A80", "#FF5252", "#FF1744", "#D50000"
+      new Colour("#FF8A80"), new Colour("#FF5252"), new Colour("#FF1744"),
+      new Colour("#D50000")
     ]
   },
   pink: {
     p: [
-      "#FCE4EC", "#F8BBD0", "#F48FB1", "#F06292", "#EC407A",
-      "#E91E63", "#D81B60", "#C2185B", "#AD1457", "#880E4F"
+      new Colour("#FCE4EC"), new Colour("#F8BBD0"), new Colour("#F48FB1"),
+      new Colour("#F06292"), new Colour("#EC407A"), new Colour("#E91E63"),
+      new Colour("#D81B60"), new Colour("#C2185B"), new Colour("#AD1457"),
+      new Colour("#880E4F")
     ],
     a: [
-      "#FF80AB", "#FF4081", "#F50057", "#C51162"
+      new Colour("#FF80AB"), new Colour("#FF4081"), new Colour("#F50057"),
+      new Colour("#C51162")
     ]
   },
   purple: {
     p: [
-      "#F3E5F5", "#E1BEE7", "#CE93D8", "#BA68C8", "#AB47BC",
-      "#9C27B0", "#8E24AA", "#7B1FA2", "#6A1B9A", "#4A148C"
+      new Colour("#F3E5F5"), new Colour("#E1BEE7"), new Colour("#CE93D8"),
+      new Colour("#BA68C8"), new Colour("#AB47BC"), new Colour("#9C27B0"),
+      new Colour("#8E24AA"), new Colour("#7B1FA2"), new Colour("#6A1B9A"),
+      new Colour("#4A148C")
     ],
     a: [
-      "#EA80FC", "#E040FB", "#D500F9", "#AA00FF"
+      new Colour("#EA80FC"), new Colour("#E040FB"), new Colour("#D500F9"),
+      new Colour("#AA00FF")
     ]
   },
   deepPurple: {
     p: [
-      "#EDE7F6", "#D1C4E9", "#B39DDB", "#9575CD", "#7E57C2",
-      "#673AB7", "#5E35B1", "#512DA8", "#4527A0", "#311B92"
+      new Colour("#EDE7F6"), new Colour("#D1C4E9"), new Colour("#B39DDB"),
+      new Colour("#9575CD"), new Colour("#7E57C2"), new Colour("#673AB7"),
+      new Colour("#5E35B1"), new Colour("#512DA8"), new Colour("#4527A0"),
+      new Colour("#311B92")
     ],
     a: [
-      "#B388FF", "#7C4DFF", "#651FFF", "#6200EA"
+      new Colour("#B388FF"), new Colour("#7C4DFF"), new Colour("#651FFF"),
+      new Colour("#6200EA")
     ]
   },
   indigo: {
     p: [
-      "#E8EAF6", "#C5CAE9", "#9FA8DA", "#7986CB", "#5C6BC0",
-      "#3F51B5", "#3949AB", "#303F9F", "#283593", "#1A237E"
+      new Colour("#E8EAF6"), new Colour("#C5CAE9"), new Colour("#9FA8DA"),
+      new Colour("#7986CB"), new Colour("#5C6BC0"), new Colour("#3F51B5"),
+      new Colour("#3949AB"), new Colour("#303F9F"), new Colour("#283593"),
+      new Colour("#1A237E")
     ],
     a: [
-      "#8C9EFF", "#536DFE", "#3D5AFE", "#304FFE"
+      new Colour("#8C9EFF"), new Colour("#536DFE"), new Colour("#3D5AFE"),
+      new Colour("#304FFE")
     ]
   },
   blue: {
     p: [
-      "#E3F2FD", "#BBDEFB", "#90CAF9", "#64B5F6", "#42A5F5",
-      "#2196F3", "#1E88E5", "#1976D2", "#1565C0", "#0D47A1"
+      new Colour("#E3F2FD"), new Colour("#BBDEFB"), new Colour("#90CAF9"),
+      new Colour("#64B5F6"), new Colour("#42A5F5"), new Colour("#2196F3"),
+      new Colour("#1E88E5"), new Colour("#1976D2"), new Colour("#1565C0"),
+      new Colour("#0D47A1")
     ],
     a: [
-      "#82B1FF", "#448AFF", "#2979FF", "#2962FF"
+      new Colour("#82B1FF"), new Colour("#448AFF"), new Colour("#2979FF"),
+      new Colour("#2962FF")
     ]
   },
   lightBlue: {
     p: [
-      "#E1F5FE", "#B3E5FC", "#81D4FA", "#4FC3F7", "#29B6F6",
-      "#03A9F4", "#039BE5", "#0288D1", "#0277BD", "#01579B"
+      new Colour("#E1F5FE"), new Colour("#B3E5FC"), new Colour("#81D4FA"),
+      new Colour("#4FC3F7"), new Colour("#29B6F6"), new Colour("#03A9F4"),
+      new Colour("#039BE5"), new Colour("#0288D1"), new Colour("#0277BD"),
+      new Colour("#01579B")
     ],
     a: [
-      "#80D8FF", "#40C4FF", "#00B0FF", "#0091EA"
+      new Colour("#80D8FF"), new Colour("#40C4FF"), new Colour("#00B0FF"),
+      new Colour("#0091EA")
     ]
   },
   cyan: {
     p: [
-      "#E0F7FA", "#B2EBF2", "#80DEEA", "#4DD0E1", "#26C6DA",
-      "#00BCD4", "#00ACC1", "#0097A7", "#00838F", "#006064"
+      new Colour("#E0F7FA"), new Colour("#B2EBF2"), new Colour("#80DEEA"),
+      new Colour("#4DD0E1"), new Colour("#26C6DA"), new Colour("#00BCD4"),
+      new Colour("#00ACC1"), new Colour("#0097A7"), new Colour("#00838F"),
+      new Colour("#006064")
     ],
     a: [
-      "#84FFFF", "#18FFFF", "#00E5FF", "#00B8D4"
+      new Colour("#84FFFF"), new Colour("#18FFFF"), new Colour("#00E5FF"),
+      new Colour("#00B8D4")
     ]
   },
   teal: {
     p: [
-      "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A",
-      "#009688", "#00897B", "#00796B", "#00695C", "#004D40"
+      new Colour("#E0F2F1"), new Colour("#B2DFDB"), new Colour("#80CBC4"),
+      new Colour("#4DB6AC"), new Colour("#26A69A"), new Colour("#009688"),
+      new Colour("#00897B"), new Colour("#00796B"), new Colour("#00695C"),
+      new Colour("#004D40")
     ],
     a: [
-      "#A7FFEB", "#64FFDA", "#1DE9B6", "#00BFA5"
+      new Colour("#A7FFEB"), new Colour("#64FFDA"), new Colour("#1DE9B6"),
+      new Colour("#00BFA5")
     ]
   },
   green: {
     p: [
-      "#E8F5E9", "#C8E6C9", "#A5D6A7", "#81C784", "#66BB6A",
-      "#4CAF50", "#43A047", "#388E3C", "#2E7D32", "#1B5E20"
+      new Colour("#E8F5E9"), new Colour("#C8E6C9"), new Colour("#A5D6A7"),
+      new Colour("#81C784"), new Colour("#66BB6A"), new Colour("#4CAF50"),
+      new Colour("#43A047"), new Colour("#388E3C"), new Colour("#2E7D32"),
+      new Colour("#1B5E20")
     ],
     a: [
-      "#B9F6CA", "#69F0AE", "#00E676", "#00C853"
+      new Colour("#B9F6CA"), new Colour("#69F0AE"), new Colour("#00E676"),
+      new Colour("#00C853")
     ]
   },
   lightGreen: {
     p: [
-      "#F1F8E9", "#DCEDC8", "#C5E1A5", "#AED581", "#9CCC65",
-      "#8BC34A", "#7CB342", "#689F38", "#558B2F", "#33691E"
+      new Colour("#F1F8E9"), new Colour("#DCEDC8"), new Colour("#C5E1A5"),
+      new Colour("#AED581"), new Colour("#9CCC65"), new Colour("#8BC34A"),
+      new Colour("#7CB342"), new Colour("#689F38"), new Colour("#558B2F"),
+      new Colour("#33691E")
     ],
     a: [
-      "#CCFF90", "#B2FF59", "#76FF03", "#64DD17"
+      new Colour("#CCFF90"), new Colour("#B2FF59"), new Colour("#76FF03"),
+      new Colour("#64DD17")
     ]
   },
   lime: {
     p: [
-      "#F9FBE7", "#F0F4C3", "#E6EE9C", "#DCE775", "#D4E157",
-      "#CDDC39", "#C0CA33", "#AFB42B", "#9E9D24", "#827717"
+      new Colour("#F9FBE7"), new Colour("#F0F4C3"), new Colour("#E6EE9C"),
+      new Colour("#DCE775"), new Colour("#D4E157"), new Colour("#CDDC39"),
+      new Colour("#C0CA33"), new Colour("#AFB42B"), new Colour("#9E9D24"),
+      new Colour("#827717")
     ],
     a: [
-      "#F4FF81", "#EEFF41", "#C6FF00", "#AEEA00"
+      new Colour("#F4FF81"), new Colour("#EEFF41"), new Colour("#C6FF00"),
+      new Colour("#AEEA00")
     ]
   },
   yellow: {
     p: [
-      "#FFFDE7", "#FFF9C4", "#FFF59D", "#FFF176", "#FFEE58",
-      "#FFEB3B", "#FDD835", "#FBC02D", "#F9A825", "#F57F17"
+      new Colour("#FFFDE7"), new Colour("#FFF9C4"), new Colour("#FFF59D"),
+      new Colour("#FFF176"), new Colour("#FFEE58"), new Colour("#FFEB3B"),
+      new Colour("#FDD835"), new Colour("#FBC02D"), new Colour("#F9A825"),
+      new Colour("#F57F17")
     ],
     a: [
-      "#FFFF8D", "#FFFF00", "#FFEA00", "#FFD600"
+      new Colour("#FFFF8D"), new Colour("#FFFF00"), new Colour("#FFEA00"),
+      new Colour("#FFD600")
     ]
   },
   amber: {
     p: [
-      "#FFF8E1", "#FFECB3", "#FFE082", "#FFD54F", "#FFCA28",
-      "#FFC107", "#FFB300", "#FFA000", "#FF8F00", "#FF6F00"
+      new Colour("#FFF8E1"), new Colour("#FFECB3"), new Colour("#FFE082"),
+      new Colour("#FFD54F"), new Colour("#FFCA28"), new Colour("#FFC107"),
+      new Colour("#FFB300"), new Colour("#FFA000"), new Colour("#FF8F00"),
+      new Colour("#FF6F00")
     ],
     a: [
-      "#FFE57F", "#FFD740", "#FFC400", "#FFAB00"
+      new Colour("#FFE57F"), new Colour("#FFD740"), new Colour("#FFC400"),
+      new Colour("#FFAB00")
     ]
   },
   orange: {
     p: [
-      "#FFF3E0", "#FFE0B2", "#FFCC80", "#FFB74D", "#FFA726",
-      "#FF9800", "#FB8C00", "#F57C00", "#EF6C00", "#E65100"
+      new Colour("#FFF3E0"), new Colour("#FFE0B2"), new Colour("#FFCC80"),
+      new Colour("#FFB74D"), new Colour("#FFA726"), new Colour("#FF9800"),
+      new Colour("#FB8C00"), new Colour("#F57C00"), new Colour("#EF6C00"),
+      new Colour("#E65100")
     ],
     a: [
-      "#FFD180", "#FFAB40", "#FF9100", "#FF6D00"
+      new Colour("#FFD180"), new Colour("#FFAB40"), new Colour("#FF9100"),
+      new Colour("#FF6D00")
     ]
   },
   deepOrange: {
     p: [
-      "#FBE9E7", "#FFCCBC", "#FFAB91", "#FF8A65", "#FF7043",
-      "#FF5722", "#F4511E", "#E64A19", "#D84315", "#BF360C"
+      new Colour("#FBE9E7"), new Colour("#FFCCBC"), new Colour("#FFAB91"),
+      new Colour("#FF8A65"), new Colour("#FF7043"), new Colour("#FF5722"),
+      new Colour("#F4511E"), new Colour("#E64A19"), new Colour("#D84315"),
+      new Colour("#BF360C")
     ],
     a: [
-      "#FF9E80", "#FF6E40", "#FF3D00", "#DD2C00"
+      new Colour("#FF9E80"), new Colour("#FF6E40"), new Colour("#FF3D00"),
+      new Colour("#DD2C00")
     ]
   },
   brown: {
     p: [
-      "#EFEBE9", "#D7CCC8", "#BCAAA4", "#A1887F", "#8D6E63",
-      "#795548", "#6D4C41", "#5D4037", "#4E342E", "#3E2723"
+      new Colour("#EFEBE9"), new Colour("#D7CCC8"), new Colour("#BCAAA4"),
+      new Colour("#A1887F"), new Colour("#8D6E63"), new Colour("#795548"),
+      new Colour("#6D4C41"), new Colour("#5D4037"), new Colour("#4E342E"),
+      new Colour("#3E2723")
     ],
     a: []
   },
   grey: {
     p: [
-      "#FAFAFA", "#F5F5F5", "#EEEEEE", "#E0E0E0", "#BDBDBD",
-      "#9E9E9E", "#757575", "#616161", "#424242", "#212121"
+      new Colour("#FAFAFA"), new Colour("#F5F5F5"), new Colour("#EEEEEE"),
+      new Colour("#E0E0E0"), new Colour("#BDBDBD"), new Colour("#9E9E9E"),
+      new Colour("#757575"), new Colour("#616161"), new Colour("#424242"),
+      new Colour("#212121")
     ],
     a: []
   },
   blueGrey: {
     p: [
-      "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C",
-      "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238"
+      new Colour("#ECEFF1"), new Colour("#CFD8DC"), new Colour("#B0BEC5"),
+      new Colour("#90A4AE"), new Colour("#78909C"), new Colour("#607D8B"),
+      new Colour("#546E7A"), new Colour("#455A64"), new Colour("#37474F"),
+      new Colour("#263238")
     ],
     a: []
   },
   white: {
     p: [
-      "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF",
-      "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"
+      new Colour("#FFFFFF"), new Colour("#FFFFFF"), new Colour("#FFFFFF"),
+      new Colour("#FFFFFF"), new Colour("#FFFFFF"), new Colour("#FFFFFF"),
+      new Colour("#FFFFFF"), new Colour("#FFFFFF"), new Colour("#FFFFFF"),
+      new Colour("#FFFFFF")
     ],
     a: []
   },
   black: {
     p: [
-      "#000000", "#000000", "#000000", "#000000", "#000000",
-      "#000000", "#000000", "#000000", "#000000", "#000000"
+      new Colour("#000000"), new Colour("#000000"), new Colour("#000000"),
+      new Colour("#000000"), new Colour("#000000"), new Colour("#000000"),
+      new Colour("#000000"), new Colour("#000000"), new Colour("#000000"),
+      new Colour("#000000")
     ],
     a: []
   }
@@ -183,6 +243,7 @@ var palette = {
 for (var i in palette) {
   if (palette.hasOwnProperty(i)) {
     var color = palette[i];
+    color.name = i;
     for (var j = 0; j < color.p.length; j++) {
       if (j == 0) color.P50 = color.p[j];
       else color["p" + j*100] = color.p[j];
