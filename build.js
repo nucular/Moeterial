@@ -1,5 +1,5 @@
 
-// node build.js --install
+// node build.js
 var pjson = require("./package.json");
 var fs = require("fs");
 var path = require("path");
@@ -97,6 +97,15 @@ function writeSkinElement(el, svgfile, file1x, file2x) {
         })
       ]);
     });
+}
+
+function getStartCommand() {
+  switch (process.platform) { 
+    case "darwin": return "open";
+    case "win32": return "start";
+    case "win64": return "start";
+    default: return "xdg-open";
+  }
 }
 
 function main() {
@@ -215,9 +224,12 @@ function main() {
       var archive = archiver.create("zip", {});
       var output = fs.createWriteStream(args.out);
 
+      output.on("end", function() {
+        output.close();
+        deferred.resolve();
+      })
       archive.on("finish", function() {
         console.log(archive.pointer() + " total bytes");
-        deferred.resolve();
       });
       archive.on("error", function(e) {
         throw e;
@@ -237,7 +249,7 @@ function main() {
     .done(function() {
       if (args.install) {
         console.log("Installing...")
-        childprocess.exec("start " + args.out);
+        childprocess.exec(getStartCommand() + " " + args.out);
       }
     });
 }

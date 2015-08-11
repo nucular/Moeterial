@@ -5,18 +5,18 @@ return boilerplate(
   })(
     circle({
       cx: 64, cy: 64,
-      r: 64 - 5 - 4,
-      stroke: accent.a400.css,
-      "stroke-width": 10,
-      fill: "none",
-    }),
-    circle({
-      cx: 64, cy: 64,
-      r: 64 - 5 - 4 - 5,
-      stroke: theme.background.css,
+      r: 64 - 5,
+      stroke: "none",
       "stroke-width": 5,
       fill: "none",
       filter: "url(#z-depth1)"
+    }),
+    circle({
+      cx: 64, cy: 64,
+      r: 64 - 5,
+      stroke: theme.text.primary,
+      "stroke-width": 10,
+      fill: "none",
     })
   )
 );
