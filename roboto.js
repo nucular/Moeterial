@@ -6,7 +6,7 @@ with (svg()) {
     id: "moeterial-roboto"
   })(
     style({type: "text/css"})(
-      "@import url('node_modules/roboto-fontface/css/roboto-fontface.css');"
+      "@import url('../node_modules/roboto-fontface/css/roboto-fontface.css');"
     )
   )
 }

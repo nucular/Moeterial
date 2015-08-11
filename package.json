@@ -27,11 +27,9 @@
   "dependencies": {
     "archiver": "^0.14.4",
     "commander": "^2.8.1",
-    "phantomjs": "^1.9.17",
     "q": "^1.4.1",
     "q-io": "^1.13.1",
     "roboto-fontface": "^0.4.2",
-    "svg2png": "^1.1.1",
     "xmgen": "nucular/xmgen"
   }
 }

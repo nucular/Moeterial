@@ -8,7 +8,7 @@ var Q = require("q");
 var Qfs = require("q-io/fs");
 var xmgen = require("xmgen");
 var args = require("commander");
-var svg2png = require("svg2png");
+var childprocess = require("child_process");
 var archiver = require("archiver");
 
 var Colour = require("./colour");
@@ -78,24 +78,23 @@ function writeSkinINI(skin, filename) {
 }
 
 function writeSkinElement(el, svgfile, file1x, file2x) {
-  var deferred1 = Q.defer();
-  var deferred2 = Q.defer();
-
-  Qfs.write(svgfile, el.toString())
+  return Qfs.write(svgfile, el.toString())
     .then(function() {
-      svg2png(svgfile, file1x, 1, function(e) {
-        console.log(file1x, "done");
-        if (e) deferred1.reject(e);
-        else deferred1.resolve();
-      });
-      svg2png(svgfile, file2x, 2, function(e) {
-        console.log(file2x, "done");
-        if (e) deferred2.reject(e);
-        else deferred2.resolve();
-      });
+      return Q.all([
+        Q.nfcall(
+          childprocess.exec,
+          "rsvg-convert -o " + file1x + " " + svgfile
+        ).then(function(stdout, stderr) {
+          process.stdout.write(stdout.join("\n"));
+        }),
+        Q.nfcall(
+          childprocess.exec,
+          "rsvg-convert -z 2 -o " + file2x + " " + svgfile
+        ).then(function(stdout, stderr) {
+          process.stdout.write(stdout.join("\n"));
+        })
+      ]);
     });
-
-  return Q.all([deferred1.promise, deferred2.promise]);
 }
 
 function main() {

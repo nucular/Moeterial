@@ -12,7 +12,7 @@ for (var i = 0; i < 3; i++) {
         fill: "#f00"
       }),
       text({
-        "font-family": "Roboto-Black",
+        "font-family": "RobotoBlack",
         "font-size": "46px",
         "fill": "#fff",
         "filter": "url(#z-depth1)",
