@@ -3,14 +3,14 @@ var out = [];
 for (var i = 0; i < 10; i++) {
   out.push(boilerplate(
     svg({
-      width: 46, height: 46,
-      viewBox: "0 0 46 46"
+      width: 40, height: 46,
+      viewBox: "0 0 40 46"
     })(
       text({
-        "font-family": "RobotoBlack",
+        "font-family": "RobotoBold",
         "font-size": "46px",
-        "fill": "#fff",
-        "stroke": "#000",
+        "fill": theme.text.primary.css,
+        "stroke": theme.background.css,
         "stroke-width": 2,
         "filter": "url(#z-depth1)",
         "x": "50%",

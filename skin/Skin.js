@@ -14,7 +14,7 @@ return {
     SliderBallFlip: 0, // for reverse sliders
     SliderBallFrames: 1,
     AllowSliderBallTint: 1, // depending on slider combo colour
-    SliderStyle: 2, // 1: segmented, 2: smooth, 3: gradient
+    SliderStyle: 3, // 1: segmented, 2: smooth, 3: gradient
     // Spinners
     SpinnerFrequencyModulate: 1,
     SpinnerFadePlayfield: 0,
@@ -35,9 +35,12 @@ return {
     SliderBall: "2,170,255",
     // Spinners
     SpinnerApproachCircle: "200,200,255",
-    // Combos (1-5)
-    Combo1: "220,220,220",
-    Combo2: "220,220,220",
+    // Combos (1-8)
+    Combo1: primary.p400.rgba.join(","),
+    Combo2: primary.p500.rgba.join(","),
+    Combo3: primary.p600.rgba.join(","),
+    Combo4: primary.p700.rgba.join(","),
+    Combo5: primary.p800.rgba.join(","),
     // Menus
     SongSelectActiveText: "0,0,0",
     SongSelectInactiveText: "255,255,255",
@@ -45,6 +48,9 @@ return {
   },
 
   Elements: {
-    "score.js": "score-%n"
+    "score.js": "score-%n",
+    "default.js": "default-%n",
+    "hitcircle.js": "hitcircle",
+    "hitcircleoverlay.js": "hitcircleoverlay"
   }
 };

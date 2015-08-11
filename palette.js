@@ -245,12 +245,14 @@ for (var i in palette) {
     var color = palette[i];
     color.name = i;
     for (var j = 0; j < color.p.length; j++) {
-      if (j == 0) color.P50 = color.p[j];
+      if (j == 0) color.p50 = color.p[j];
       else color["p" + j*100] = color.p[j];
     }
     for (var j = 0; j < color.a.length; j++) {
-      if (j == 0) color.P50 = color.a[j];
-      else color["a" + j*100] = color.a[j];
+      if (j == 0) color.a100 = color.a[j];
+      else if (j == 1) color.a200 = color.a[j];
+      else if (j == 2) color.a400 = color.a[j];
+      else if (j == 3) color.a700 = color.a[j];
     }
   }
 }

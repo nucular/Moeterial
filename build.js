@@ -1,5 +1,5 @@
 
-// node build.js
+// node build.js --install
 var pjson = require("./package.json");
 var fs = require("fs");
 var path = require("path");
@@ -102,13 +102,14 @@ function writeSkinElement(el, svgfile, file1x, file2x) {
 function main() {
   args
     .version(pjson.version)
-    .option("-t, --theme [dark/light]", "base theme (\"light\")", "light")
+    .option("-t, --theme [dark/light]", "base theme (\"light\")", "dark")
     .option("-p, --primary [color]", "primary hue (\"blue\")", "blue")
     .option("-a, --accent [color]", "accent hue (\"pink\")", "pink")
 
     .option("-i, --in [path]", "input file (\"./skin/Skin.js\")", "./skin/Skin.js")
     .option("-o, --out [path]", "output file (\"./Moeterial-light-blue-pink.osk\")", String)
-    .parse(process.argv)
+    .option("--install", "launch output file after building", false)
+    .parse(process.argv);
 
   args.out = args.out || "./Moeterial-" + pjson.version + "-"
       + args.theme + "-" + args.primary + "-" + args.accent + ".osk";
@@ -159,7 +160,7 @@ function main() {
     .then(function() { return evaluateFile(args.in); })
     .then(function(skin) {
       var promises = [
-        writeSkinINI(skin, path.join(outdir, "Skin.ini"))
+        writeSkinINI(skin, path.join(outdir, "skin.ini"))
       ];
 
       Object.keys(skin.Elements).forEach(function(i) {
@@ -170,18 +171,24 @@ function main() {
           .then(function(el) {
             if (el.constructor == Array) {
 
-              var promises = [];
-              for (var j = 0; j < el.length; j++) {
+              var p;
+              el.forEach(function(v, j) {
                 var or = o.replace(/%n/gi, j);
-                console.log("Rendering", or, "...");
-                promises.push(writeSkinElement(
-                  el[j],
-                  path.join(outdir, or + ".svg"),
-                  path.join(outdir, or + ".png"),
-                  path.join(outdir, or + "@2x.png")
-                ));
-              }
-              return Q.all(promises);
+                var f = function() {
+                  console.log("Rendering", or, "...");
+                  return writeSkinElement(
+                    v,
+                    path.join(outdir, or + ".svg"),
+                    path.join(outdir, or + ".png"),
+                    path.join(outdir, or + "@2x.png")
+                  );
+                }
+                if (j == 0)
+                  p = f();
+                else
+                  p = p.then(f);
+              });
+              return p;
 
             } else {
               
@@ -201,7 +208,7 @@ function main() {
       return Q.all(promises);
     })
 
-    .done(function() {
+    .then(function() {
       var deferred = Q.defer();
       console.log("Archiving to", args.out);
 
@@ -210,6 +217,7 @@ function main() {
 
       archive.on("finish", function() {
         console.log(archive.pointer() + " total bytes");
+        deferred.resolve();
       });
       archive.on("error", function(e) {
         throw e;
@@ -217,13 +225,20 @@ function main() {
 
       archive.pipe(output);
       archive.bulk([
-        {expand: true, cwd: outdir, src: "*.png", dest: name + "/"},
-        {expand: true, cwd: indir, src: "*.wav", dest: name + "/"},
-        {expand: true, cwd: outdir, src: "Skin.ini", dest: name + "/"}
+        {expand: true, cwd: outdir, src: "*.png"},
+        {expand: true, cwd: indir, src: "*.wav"},
+        {expand: true, cwd: outdir, src: "skin.ini"}
       ]);
       archive.finalize();
 
       return deferred.promise;
+    })
+
+    .done(function() {
+      if (args.install) {
+        console.log("Installing...")
+        childprocess.exec("start " + args.out);
+      }
     });
 }
 
