@@ -1,6 +1,6 @@
 return {
   General: {
-    Name: "Moetorial " + pjson.version
+    Name: "Moeterial " + pjson.version
       + " " + theme.name + "-" + primary.name+ "-" + accent.name,
     Author: "nucular and contributors",
     Version: "latest",

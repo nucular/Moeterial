@@ -9,7 +9,7 @@ with (svg()) {
       "style": "color-interpolation-filters:sRGB;",
       "id": "z-depth1",
       "x": "-10%", "y": "-10%",
-      "width": "120%", "height": "120%"
+      "width": "120%", "height": "130%"
     })(
       feFlood({
         "flood-opacity": "0.12",

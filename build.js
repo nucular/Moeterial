@@ -69,9 +69,9 @@ function writeSkinINI(skin, filename) {
       || typeof skin[i] != "object") {
       continue;
     }
-    ini += "[" + i + "]\n";
+    ini += "[" + i + "]\r\n";
     for (j in skin[i])
-      ini += j + ": " + skin[i][j].toString() + "\n";
+      ini += j + ": " + skin[i][j].toString() + "\r\n";
   }
 
   return Qfs.write(filename, ini);
@@ -85,13 +85,15 @@ function writeSkinElement(el, svgfile, file1x, file2x) {
           childprocess.exec,
           "rsvg-convert -o " + file1x + " " + svgfile
         ).then(function(stdout, stderr) {
-          process.stdout.write(stdout.join("\n"));
+          process.stdout.write(stdout.join("\n").trim());
+          console.log(file1x, "done");
         }),
         Q.nfcall(
           childprocess.exec,
           "rsvg-convert -z 2 -o " + file2x + " " + svgfile
         ).then(function(stdout, stderr) {
-          process.stdout.write(stdout.join("\n"));
+          process.stdout.write(stdout.join("\n").trim());
+          console.log(file2x, "done");
         })
       ]);
     });
@@ -217,7 +219,7 @@ function main() {
       archive.bulk([
         {expand: true, cwd: outdir, src: "*.png", dest: name + "/"},
         {expand: true, cwd: indir, src: "*.wav", dest: name + "/"},
-        {src: "Skin.ini", dest: name + "/"}
+        {expand: true, cwd: outdir, src: "Skin.ini", dest: name + "/"}
       ]);
       archive.finalize();
 
