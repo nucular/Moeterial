@@ -40,7 +40,6 @@ return {
     Combo2: primary.p500.rgba.join(","),
     Combo3: primary.p600.rgba.join(","),
     Combo4: primary.p700.rgba.join(","),
-    Combo5: primary.p800.rgba.join(","),
     // Menus
     SongSelectActiveText: "0,0,0",
     SongSelectInactiveText: "255,255,255",
@@ -52,6 +51,7 @@ return {
     "default.js": "default-%n",
     "hitcircle.js": "hitcircle",
     "hitcircleoverlay.js": "hitcircleoverlay",
-    "approachcircle.js": "approachcircle"
+    "approachcircle.js": "approachcircle",
+    "menu-back.js": "menu-back"
   }
 };

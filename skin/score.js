@@ -9,8 +9,8 @@ for (var i = 0; i < 10; i++) {
       text({
         "font-family": "RobotoBold",
         "font-size": "46px",
-        "fill": theme.text.primary.css,
-        "stroke": theme.background.css,
+        "fill": themes.dark.text.primary.css,
+        "stroke": themes.dark.background.css,
         "stroke-width": 2,
         "filter": "url(#z-depth1)",
         "x": "50%",

@@ -1,5 +1,5 @@
 
-// node build.js
+// node build.js --install
 var pjson = require("./package.json");
 var fs = require("fs");
 var path = require("path");
@@ -16,7 +16,7 @@ var palette = require("./palette");
 var themes = require("./themes");
 var shadows = require("./shadows");
 
-var theme = themes.dark;
+var theme = themes.light;
 var primary = palette.blue;
 var accent = palette.pink;
 
@@ -41,19 +41,25 @@ function evaluateFile(filename, withsvg) {
       data = "with (xmgen.svg()) {\n" + data + "\n}";
     }
 
-    // TODO: Figure out a better way to pass this junk
-    var f = new Function(
-      "theme", "primary", "accent",
-      "palette", "themes",
-      "Colour", "xmgen", "args", "pjson",
-      "boilerplate", data
-    ).bind(this);
-    var r = f(
-      theme, primary, accent,
-      palette, themes,
-      Colour, xmgen, args, pjson,
-      boilerplate
-    );
+    try {
+      // TODO: Figure out a better way to pass this junk
+      var f = new Function(
+        "theme", "primary", "accent",
+        "palette", "themes",
+        "Colour", "xmgen", "args", "pjson",
+        "boilerplate", data
+      ).bind(this);
+
+      var r = f(
+        theme, primary, accent,
+        palette, themes,
+        Colour, xmgen, args, pjson,
+        boilerplate
+      );
+    } catch (e) {
+      console.error(e.stack);
+      throw e;
+    }
 
     return r;
   });
@@ -109,7 +115,7 @@ function getStartCommand() {
 function main() {
   args
     .version(pjson.version)
-    .option("-t, --theme [dark/light]", "base theme (\"light\")", "dark")
+    .option("-t, --theme [dark/light]", "base theme (\"light\")", "light")
     .option("-p, --primary [color]", "primary hue (\"blue\")", "blue")
     .option("-a, --accent [color]", "accent hue (\"pink\")", "pink")
 
@@ -163,7 +169,11 @@ function main() {
       var promises = [
         writeSkinINI(skin, path.join(outdir, "skin.ini"))
       ];
-      var zipmod = fs.statSync(args.out).mtime;
+      try {
+        var zipmod = fs.statSync(args.out).mtime;
+      } catch (e) {
+        var zipmod = 0;
+      }
 
       Object.keys(skin.Elements).forEach(function(i) {
         var o = skin.Elements[i];
@@ -242,6 +252,10 @@ function main() {
         console.log("Installing...")
         childprocess.exec(getStartCommand() + " " + args.out);
       }
+    })
+
+    .fail(function(e) {
+      console.error(e.stack);
     });
 }
 

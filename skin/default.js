@@ -9,7 +9,7 @@ for (var i = 0; i < 10; i++) {
       text({
         "font-family": "RobotoRegular",
         "font-size": "52px",
-        "fill": theme.text.primary.css,
+        "fill": themes.dark.text.primary.css,
         "x": "50%",
         "y": "44px",
         "text-anchor": "middle",
