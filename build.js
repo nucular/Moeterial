@@ -15,7 +15,6 @@ var Colour = require("./colour");
 var palette = require("./palette");
 var themes = require("./themes");
 var shadows = require("./shadows");
-var roboto = require("./roboto");
 
 var theme = themes.dark;
 var primary = palette.blue;
@@ -26,7 +25,6 @@ function boilerplate(svg) {
   svg["xmlns:xlink"] = "http://www.w3.org/1999/xlink";
 
   svg._children.unshift(shadows);
-  svg._children.unshift(roboto);
 
   return xmgen.Element()(
     xmgen.Element("?xml", {version: "1.0", encoding: "UTF-8"}),
@@ -78,7 +76,7 @@ function writeSkinINI(skin, filename) {
 }
 
 function writeSkinElement(el, svgfile, file1x, file2x) {
-  return Qfs.write(svgfile, el.toString())
+  Qfs.write(svgfile, el.toString())
     .then(function() {
       return Q.all([
         Q.nfcall(
@@ -118,6 +116,7 @@ function main() {
     .option("-i, --in [path]", "input file (\"./skin/Skin.js\")", "./skin/Skin.js")
     .option("-o, --out [path]", "output file (\"./Moeterial-light-blue-pink.osk\")", String)
     .option("--install", "launch output file after building", false)
+    .option("--force", "rebuild and render files even if not modified", false)
     .parse(process.argv);
 
   args.out = args.out || "./Moeterial-" + pjson.version + "-"
@@ -154,18 +153,11 @@ function main() {
   var outdir = "./build";
   var name = path.basename(args.out, path.extname(args.out));
 
-  Q.spread([
-    Qfs.exists(outdir),
-    Qfs.isDirectory(outdir)
-  ], function(exists, isdir) {
-    if (exists && isdir)
-      return Qfs.removeTree(outdir).then(function() {
-        Qfs.makeDirectory(outdir);
-      })
-    else
-      return Qfs.makeDirectory(outdir);
-  })
-
+  Qfs.exists(outdir)
+    .then(function(exists) {
+      if (!exists)
+        return Qfs.makeDirectory(outdir);
+    })
     .then(function() { return evaluateFile(args.in); })
     .then(function(skin) {
       var promises = [
@@ -178,30 +170,23 @@ function main() {
         promises.push(
           evaluateFile(path.join(indir, i), true)
           .then(function(el) {
+            
             if (el.constructor == Array) {
 
-              var p;
-              el.forEach(function(v, j) {
-                var or = o.replace(/%n/gi, j);
-                var f = function() {
-                  console.log("Rendering", or, "...");
+              return el.reduce(function(p, v, j) {
+                return p.then(function() {
+                  var or = o.replace(/%n/gi, j);
                   return writeSkinElement(
                     v,
                     path.join(outdir, or + ".svg"),
                     path.join(outdir, or + ".png"),
                     path.join(outdir, or + "@2x.png")
                   );
-                }
-                if (j == 0)
-                  p = f();
-                else
-                  p = p.then(f);
-              });
-              return p;
+                });
+              }, Q());
 
             } else {
               
-              console.log("Rendering", o, "...");
               return writeSkinElement(
                 el,
                 path.join(outdir, o + ".svg"),
@@ -214,7 +199,7 @@ function main() {
         );
       });
 
-      return Q.all(promises);
+      return Q.allSettled(promises);
     })
 
     .then(function() {
@@ -224,8 +209,7 @@ function main() {
       var archive = archiver.create("zip", {});
       var output = fs.createWriteStream(args.out);
 
-      output.on("end", function() {
-        output.close();
+      output.on("finish", function() {
         deferred.resolve();
       })
       archive.on("finish", function() {
@@ -242,11 +226,12 @@ function main() {
         {expand: true, cwd: outdir, src: "skin.ini"}
       ]);
       archive.finalize();
+      console.log("finalized");
 
       return deferred.promise;
     })
 
-    .done(function() {
+    .then(function() {
       if (args.install) {
         console.log("Installing...")
         childprocess.exec(getStartCommand() + " " + args.out);

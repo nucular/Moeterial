@@ -51,6 +51,7 @@ return {
     "score.js": "score-%n",
     "default.js": "default-%n",
     "hitcircle.js": "hitcircle",
-    "hitcircleoverlay.js": "hitcircleoverlay"
+    "hitcircleoverlay.js": "hitcircleoverlay",
+    "approachcircle.js": "approachcircle"
   }
 };

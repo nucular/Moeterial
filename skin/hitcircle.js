@@ -5,8 +5,16 @@ return boilerplate(
   })(
     circle({
       cx: 64, cy: 64,
-      r: 64 - 4,
+      r: 64,
       fill: "#fff"
+    }),
+    circle({
+      cx: 64, cy: 64,
+      r: 64 - 7,
+      stroke: "#fff",
+      "stroke-width": 5,
+      fill: "none",
+      filter: "url(#z-depth1)"
     })
   )
 );

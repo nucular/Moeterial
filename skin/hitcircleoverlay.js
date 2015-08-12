@@ -6,17 +6,9 @@ return boilerplate(
     circle({
       cx: 64, cy: 64,
       r: 64 - 5,
-      stroke: "none",
-      "stroke-width": 5,
-      fill: "none",
-      filter: "url(#z-depth1)"
-    }),
-    circle({
-      cx: 64, cy: 64,
-      r: 64 - 5,
-      stroke: theme.text.primary,
+      stroke: "#fff",
       "stroke-width": 10,
-      fill: "none",
+      fill: "none"
     })
   )
 );
