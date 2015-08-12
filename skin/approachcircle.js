@@ -6,7 +6,7 @@ return boilerplate(
     circle({
       cx: 63, cy: 63,
       r: 63 - 2,
-      stroke: accent.a400.css,
+      stroke: "#fff",
       "stroke-width": 4,
       fill: "none"
     })

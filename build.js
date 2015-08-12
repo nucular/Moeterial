@@ -76,7 +76,7 @@ function writeSkinINI(skin, filename) {
 }
 
 function writeSkinElement(el, svgfile, file1x, file2x) {
-  Qfs.write(svgfile, el.toString())
+  return Qfs.write(svgfile, el.toString())
     .then(function() {
       return Q.all([
         Q.nfcall(
@@ -163,9 +163,16 @@ function main() {
       var promises = [
         writeSkinINI(skin, path.join(outdir, "skin.ini"))
       ];
+      var zipmod = fs.statSync(args.out).mtime;
 
       Object.keys(skin.Elements).forEach(function(i) {
         var o = skin.Elements[i];
+
+        var jsmod = fs.statSync(path.join(indir, i)).mtime;
+        if (zipmod >= jsmod && !args.force) {
+          console.log(i, "was not modified");
+          return;
+        }
 
         promises.push(
           evaluateFile(path.join(indir, i), true)
@@ -226,7 +233,6 @@ function main() {
         {expand: true, cwd: outdir, src: "skin.ini"}
       ]);
       archive.finalize();
-      console.log("finalized");
 
       return deferred.promise;
     })
