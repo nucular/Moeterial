@@ -52,6 +52,11 @@ return {
     "hitcircle.js": "hitcircle",
     "hitcircleoverlay.js": "hitcircleoverlay",
     "approachcircle.js": "approachcircle",
-    "menu-back.js": "menu-back"
+    "menu-back.js": "menu-back",
+    "sliderb.js": "sliderb0",
+    "sliderfollowcircle.js": "sliderfollowcircle",
+    "button-left.js": "button-left",
+    "button-middle.js": "button-middle",
+    "button-right.js": "button-right"
   }
 };

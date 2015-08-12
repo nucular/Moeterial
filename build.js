@@ -1,5 +1,5 @@
 
-// node build.js --install
+// node build.js
 var pjson = require("./package.json");
 var fs = require("fs");
 var path = require("path");

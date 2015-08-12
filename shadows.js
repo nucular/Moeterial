@@ -8,8 +8,8 @@ with (svg()) {
     filter({
       "style": "color-interpolation-filters:sRGB;",
       "id": "z-depth1",
-      "x": "-10%", "y": "-10%",
-      "width": "120%", "height": "130%"
+      "x": "-40%", "y": "-10%",
+      "width": "180%", "height": "130%"
     })(
       feFlood({
         "flood-opacity": "0.12",
