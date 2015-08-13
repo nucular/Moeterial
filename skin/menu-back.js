@@ -11,7 +11,7 @@ return boilerplate(
     circle({
       cx: w - cr - 10, cy: cr + 8,
       r: cr,
-      fill: accent.p400.css,
+      fill: accent.a400.css,
       filter: "url(#z-depth2)"
     }),
     svg({

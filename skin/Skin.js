@@ -6,14 +6,14 @@ return {
     Version: "latest",
 
     // Cursor
-    CursorRotate: 0,
+    CursorRotate: 1,
     CursorTrailRotate: 0,
     CursorExpand: 1,
     CursorCentre: 1, // 0: top-left, 1: center
     // Sliders
     SliderBallFlip: 0, // for reverse sliders
     SliderBallFrames: 1,
-    AllowSliderBallTint: 1, // depending on slider combo colour
+    AllowSliderBallTint: 0, // depending on slider combo colour
     SliderStyle: 3, // 1: segmented, 2: smooth, 3: gradient
     // Spinners
     SpinnerFrequencyModulate: 1,
@@ -29,10 +29,10 @@ return {
 
   Colours: {
     // Cursor
-    StarBreakAdditive: "255,182,193", // cursor particle colour
+    StarBreakAdditive: accent.a400.rgba.join(","), // cursor particle colour
     // Sliders
-    SliderBorder: "100,100,100",
-    SliderBall: "2,170,255",
+    SliderBorder: primary.p100.rgba.join(","),
+    SliderBall: accent.a200.rgba.join(","),
     // Spinners
     SpinnerApproachCircle: "200,200,255",
     // Combos (1-8)
@@ -57,6 +57,10 @@ return {
     "sliderfollowcircle.js": "sliderfollowcircle",
     "button-left.js": "button-left",
     "button-middle.js": "button-middle",
-    "button-right.js": "button-right"
+    "button-right.js": "button-right",
+    "cursor.js": "cursor",
+    "cursormiddle.js": "cursormiddle",
+    "cursortrail.js": "cursortrail",
+    "reversearrow.js": "reversearrow"
   }
 };

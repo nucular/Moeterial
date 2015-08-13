@@ -6,7 +6,7 @@ return boilerplate(
     circle({
       cx: 64, cy: 64,
       r: 64 - 7,
-      stroke: "#fff",
+      stroke: accent.a200.css,
       "stroke-width": 5,
       fill: "none",
       filter: "url(#z-depth1)"
@@ -14,7 +14,7 @@ return boilerplate(
     circle({
       cx: 64, cy: 64,
       r: 64 - 5,
-      stroke: "#fff",
+      stroke: accent.a200.css,
       "stroke-width": 10,
       fill: "none"
     })

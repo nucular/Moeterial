@@ -6,7 +6,7 @@ return boilerplate(
     circle({
       cx: 64, cy: 64,
       r: 64,
-      fill: "#fff"
+      fill: "rgba(255, 255, 255, 0.7)"
     }),
     circle({
       cx: 64, cy: 64,
