@@ -14,7 +14,7 @@ return {
     SliderBallFlip: 0, // for reverse sliders
     SliderBallFrames: 1,
     AllowSliderBallTint: 0, // depending on slider combo colour
-    SliderStyle: 3, // 1: segmented, 2: smooth, 3: gradient
+    SliderStyle: 2, // 1: segmented, 2: smooth, 3: gradient
     // Spinners
     SpinnerFrequencyModulate: 1,
     SpinnerFadePlayfield: 0,
@@ -61,6 +61,12 @@ return {
     "cursor.js": "cursor",
     "cursormiddle.js": "cursormiddle",
     "cursortrail.js": "cursortrail",
-    "reversearrow.js": "reversearrow"
+    "reversearrow.js": "reversearrow",
+    "followpoint.js": "followpoint",
+    "hit300.js": "hit300",
+    "hit300g.js": "hit300g",
+    "hit300k.js": "hit300k",
+    "star.js": "star",
+    "star2.js": "star2"
   }
 };

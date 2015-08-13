@@ -3,8 +3,8 @@ var out = [];
 for (var i = 0; i < 10; i++) {
   out.push(boilerplate(
     svg({
-      width: 40, height: 46,
-      viewBox: "0 0 40 46"
+      width: 30, height: 46,
+      viewBox: "0 0 30 46"
     })(
       text({
         "font-family": "RobotoBold",
