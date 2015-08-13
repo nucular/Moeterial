@@ -1,5 +1,5 @@
 
-// node build.js
+// node build.js --install
 var pjson = require("./package.json");
 var fs = require("fs");
 var path = require("path");
@@ -82,7 +82,17 @@ function writeSkinINI(skin, filename) {
 }
 
 function writeSkinElement(el, svgfile, file1x, file2x) {
-  return Qfs.write(svgfile, el.toString())
+  var svg = el.toString();
+
+  // fuck it
+  if (!args.force
+    && fs.existsSync(svgfile)
+    && fs.readFileSync(svgfile, {encoding: "utf-8"}) == svg) {
+    console.log("skipping", svgfile);
+    return;
+  }
+
+  return Qfs.write(svgfile, svg)
     .then(function() {
       return Q.all([
         Q.nfcall(
@@ -169,20 +179,9 @@ function main() {
       var promises = [
         writeSkinINI(skin, path.join(outdir, "skin.ini"))
       ];
-      try {
-        var zipmod = fs.statSync(args.out).mtime;
-      } catch (e) {
-        var zipmod = 0;
-      }
 
       Object.keys(skin.Elements).forEach(function(i) {
         var o = skin.Elements[i];
-
-        var jsmod = fs.statSync(path.join(indir, i)).mtime;
-        if (zipmod >= jsmod && !args.force) {
-          console.log(i, "was not modified");
-          return;
-        }
 
         promises.push(
           evaluateFile(path.join(indir, i), true)
