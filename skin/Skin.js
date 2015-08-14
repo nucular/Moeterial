@@ -47,7 +47,11 @@ return {
   },
 
   Elements: {
-    "score.js": "score-%n",
+    "score/score.js": "score-%n",
+    "score/score-comma.js": "score-comma",
+    "score/score-dot.js": "score-dot",
+    "score/score-percent.js": "score-percent",
+    "score/score-x.js": "score-x",
     "default.js": "default-%n",
     "hitcircle.js": "hitcircle",
     "hitcircleoverlay.js": "hitcircleoverlay",
