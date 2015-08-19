@@ -1,4 +1,4 @@
-return {
+var skin = {
   General: {
     Name: "Moeterial " + pjson.version
       + " " + theme.name + "-" + primary.name+ "-" + accent.name,
@@ -46,6 +46,10 @@ return {
     MenuGlow: "0,78,155" // visualization bar (supporters only)
   },
 
+  Fonts: {
+    HitCircleOverlap: 10
+  },
+
   Elements: {
     "score/score.js": "score-%n",
     "score/score-comma.js": "score-comma",
@@ -74,3 +78,16 @@ return {
     "star2.js": "star2"
   }
 };
+
+if (args.hiddenends) {
+  skin.Fonts.HitCircleOverlap = 220;
+
+  delete skin.Elements["default.js"];
+  delete skin.Elements["hitcircle.js"];
+  delete skin.Elements["hitcircleoverlay.js"];
+  skin.Elements["hiddenends/default.js"] = "default-%n";
+  skin.Elements["hiddenends/hitcircle.js"] = "hitcircle";
+  skin.Elements["hiddenends/hitcircleoverlay.js"] = "hitcircleoverlay";
+}
+
+return skin;

@@ -133,6 +133,8 @@ function main() {
     .option("-o, --out [path]", "output file (\"./Moeterial-light-blue-pink.osk\")", String)
     .option("--install", "launch output file after building", false)
     .option("--force", "rebuild and render files even if not modified", false)
+    .option("--hiddenends", "hide the slider ends (breaks hitcircle numbering above 9 and combo colours)", false)
+    .option("--nonumbers", "hide the hitcircle numbering", false)
     .parse(process.argv);
 
   args.out = args.out || "./Moeterial-" + pjson.version + "-"
