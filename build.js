@@ -253,7 +253,7 @@ function main() {
         console.log("Installing...")
         childprocess.exec(getStartCommand() + " " + args.out);
       }
-    })
+    });
 
     .fail(function(e) {
       console.error(e.stack);
