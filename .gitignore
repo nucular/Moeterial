@@ -3,5 +3,5 @@ node_modules
 *.sock
 .idea
 build
-rsvg-convert*
+dist
 *.osk

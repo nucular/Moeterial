@@ -1,5 +1,5 @@
 
-// node build.js --install
+// node build.js --install --hiddenends
 var pjson = require("./package.json");
 var fs = require("fs");
 var path = require("path");
@@ -11,10 +11,10 @@ var args = require("commander");
 var childprocess = require("child_process");
 var archiver = require("archiver");
 
-var Colour = require("./colour");
-var palette = require("./palette");
-var themes = require("./themes");
-var shadows = require("./shadows");
+var Colour = require("./lib/Colour.js");
+var palette = require("./lib/palette.js");
+var themes = require("./lib/themes.js");
+var shadows = require("./lib/shadows.js");
 
 var theme = themes.light;
 var primary = palette.blue;
@@ -253,7 +253,7 @@ function main() {
         console.log("Installing...")
         childprocess.exec(getStartCommand() + " " + args.out);
       }
-    });
+    })
 
     .fail(function(e) {
       console.error(e.stack);
